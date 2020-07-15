@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="week">
+        <item>@string/calendar_sunday</item>
+        <item>@string/calendar_monday</item>
+        <item>@string/calendar_tuesday</item>
+        <item>@string/calendar_wednesday</item>
+        <item>@string/calendar_thursday</item>
+        <item>@string/calendar_friday</item>
+        <item>@string/calendar_saturday</item>
+    </string-array>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00000000</color>
+
+    <color name="calendar_day_curday">#2fd147</color>
+    <color name="calendar_day_havevideo">#FF0000</color>
+
+    <color name="calendar_day_today">#00000000</color>
+    <color name="calendar_day_selected_day">#80B2E4</color>
+    <color name="calendar_day_flag_day">#FF0000</color>
+    <color name="calendar_day_focus_day">#00000000</color>
+
+    <color name="calendar_day_text_selected">#ffffff</color>
+    <color name="calendar_day_text_today">#ffff0000</color>
+    <color name="calendar_day_text_current_month">#676767</color>
+    <color name="calendar_day_text_other_month">#d8d7dc</color>
+    <color name="calendar_day_text_week_title">#676767</color>
+</resources>

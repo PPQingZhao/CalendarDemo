@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CalendarView">
+        <!--size-->
+        <attr name="calendar_day_textSize" format="dimension" />
+        <attr name="calendar_weektitle_textSize" format="dimension" />
+        <!--color-->
+        <attr name="calendar_color_today_text" format="color|reference" />
+        <attr name="calendar_color_selected_text" format="color|reference" />
+        <attr name="calendar_color_focused_text" format="color|reference" />
+        <attr name="calendar_color_weektitle_text" format="color|reference" />
+        <attr name="calendar_color_currentmonth_text" format="color|reference" />
+        <attr name="calendar_color_othermonth_text" format="color|reference" />
+        <attr name="calendar_color_backgroud_selected" format="reference|color" />
+        <attr name="calendar_color_day_flag" format="reference|color" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="calendar_monday">M</string>
+    <string name="calendar_tuesday">T</string>
+    <string name="calendar_wednesday">W</string>
+    <string name="calendar_thursday">T</string>
+    <string name="calendar_friday">F</string>
+    <string name="calendar_saturday">S</string>
+    <string name="calendar_sunday">S</string>
+</resources>
