@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Calendar;
@@ -19,9 +20,8 @@ public class CalendarView extends FrameLayout {
     private static final int DEFAULT_END_YEAR = 2100;
     private CalendarAdapter calendarAdapter;
     private RecyclerView mRecyclerView;
-    private GridPagerSnapHelper gridPagerSnapHelper;
+    private PagerSnapHelper mPagerSnapHelper;
     private Calendar selectedCalendar; // 选中年月
-    private Calendar playCalendar; // 选中日期
 
     public CalendarView(@NonNull Context context) {
         this(context, null);
@@ -57,25 +57,11 @@ public class CalendarView extends FrameLayout {
 
         mRecyclerView.setLayoutManager(new GridLayoutManager(context, 1, GridLayoutManager.HORIZONTAL, false));
         mRecyclerView.setAdapter(calendarAdapter);
-        gridPagerSnapHelper = new GridPagerSnapHelper(1, 1);
-        gridPagerSnapHelper.setOnPagerSelectedListener(new GridPagerSnapHelper.OnPagerSelectedListener() {
-            @Override
-            public void onSelected(int pager) {
-                int year = calendarAdapter.getYearForPosition(pager);
-                int month = calendarAdapter.getMonthForPosition(pager);
-                selectedCalendar.set(Calendar.YEAR, year);
-                selectedCalendar.set(Calendar.MONTH, month);
-                if (null != onCalendarListener) {
-                    onCalendarListener.onMonthChanged(year, month);
-                }
-            }
-        });
-        gridPagerSnapHelper.attachToRecyclerView(mRecyclerView);
+        mPagerSnapHelper = new PagerSnapHelper();
+        mPagerSnapHelper.attachToRecyclerView(mRecyclerView);
 
         selectedCalendar = Calendar.getInstance();
-        playCalendar = Calendar.getInstance();
 
-        setPlayDate();
         int position = calendarAdapter.getPositionForDay(selectedCalendar);
         mRecyclerView.scrollToPosition(position);
     }
@@ -110,48 +96,22 @@ public class CalendarView extends FrameLayout {
         selectedCalendar.set(Calendar.MONTH, month);
     }
 
-    public void setPlayDate() {
-        calendarAdapter.setSelectYear(playCalendar.get(Calendar.YEAR));
-        calendarAdapter.setSelectMonth(playCalendar.get(Calendar.MONTH));
-        calendarAdapter.setSelectDay(playCalendar.get(Calendar.DAY_OF_MONTH));
-    }
-
-    public Calendar getPlayCalendar() {
-        return playCalendar;
-    }
-
-    private OnCalendarListener onCalendarListener;
-
-    public void setOnCalendarListener(OnCalendarListener onCalendarListener) {
-        this.onCalendarListener = onCalendarListener;
-        calendarAdapter.setOnCalendarListener(onCalendarListener);
-    }
-
     public void setDate(int year, int month) {
         setYear(year);
         setMonth(month);
         int position = calendarAdapter.getPositionForDay(selectedCalendar);
         mRecyclerView.scrollToPosition(position);
-        if (null != onCalendarListener) {
-            onCalendarListener.onMonthChanged(getYear(), getMonth());
-        }
     }
 
     public void previousMonth() {
         int targetPos = calendarAdapter.getPositionForDay(selectedCalendar) - 1;
         selectedCalendar.add(Calendar.MONTH, -1);
-        if (null != onCalendarListener) {
-            onCalendarListener.onMonthChanged(getYear(), getMonth());
-        }
         smoothScrollToPosition(targetPos);
     }
 
     public void nextMonth() {
         int targetPos = calendarAdapter.getPositionForDay(selectedCalendar) + 1;
         selectedCalendar.add(Calendar.MONTH, 1);
-        if (null != onCalendarListener) {
-            onCalendarListener.onMonthChanged(getYear(), getMonth());
-        }
         smoothScrollToPosition(targetPos);
     }
 
@@ -161,9 +121,4 @@ public class CalendarView extends FrameLayout {
         }
     }
 
-    public interface OnCalendarListener {
-        void onDayClick(int year, int month, int day, boolean hasData);
-
-        void onMonthChanged(int year, int month);
-    }
 }

@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-
-    <data class="com.example.calendardemo.MainBinding" />
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:layout_height="match_parent">
 
-        <com.pp.calendar.CalendarView
-            android:id="@+id/view_calendar"
+        <Button
+            android:id="@+id/main_btn_calendar1"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:focusable="false"
-            app:calendar_color_backgroud_selected="@android:color/holo_orange_dark"
-            app:calendar_color_currentmonth_text="@android:color/black"
-            app:calendar_color_day_flag="@android:color/holo_orange_dark"
-            app:calendar_color_othermonth_text="@android:color/holo_orange_dark"
-            app:calendar_color_weektitle_text="@android:color/black"
-            app:calendar_day_textSize="14sp"
-            app:calendar_weektitle_textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="4:3"
+            android:layout_height="wrap_content"
+            android:onClick="onCalendar1"
+            android:text="简单日历"
+            app:layout_constraintBottom_toTopOf="@id/main_btn_calendar2"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <Button
+            android:id="@+id/main_btn_calendar2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="onCalendar2"
+            android:text="仿华为日历效果"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_btn_calendar1"
+            app:layout_constraintWidth_percent="0.8" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
