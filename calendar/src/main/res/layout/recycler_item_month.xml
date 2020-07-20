@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
 
-    <com.pp.calendar.MonthView2
+    <com.pp.calendar.MonthView
         android:id="@+id/monthview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

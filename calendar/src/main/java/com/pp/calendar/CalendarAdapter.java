@@ -25,7 +25,6 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.MonthV
     private int mCount;
     private final Calendar mMinDate = Calendar.getInstance();
     private final Calendar mMaxDate = Calendar.getInstance();
-    private Map<Integer, MonthView.MonthFlag> monthDataMap = new HashMap<Integer, MonthView.MonthFlag>();
 
     public CalendarAdapter(Context context, AttributeSet attrs) {
         this.mContext = context;
@@ -72,7 +71,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.MonthV
 
     class MonthViewolder extends RecyclerView.ViewHolder {
 
-        private final MonthView2 monthView;
+        private final MonthView monthView;
 
         public MonthViewolder(@NonNull View itemView) {
             super(itemView);
@@ -101,21 +100,4 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.MonthV
         return position;
     }
 
-    public void setMonthData(Calendar instance, int monthData) {
-        int position = getPositionForDay(instance);
-        MonthView.MonthFlag monthFlag = monthDataMap.get(position);
-        if (null == monthFlag) {
-            monthFlag = new MonthView.MonthFlag(instance.get(Calendar.YEAR), instance.get(Calendar.MONTH));
-        }
-        monthFlag.dayCircleFlag = monthData;
-        monthDataMap.put(position, monthFlag);
-        notifyDataSetChanged();
-    }
-
-
-    public int getMonthData(Calendar instance) {
-        int position = getPositionForDay(instance);
-        MonthView.MonthFlag monthFlag = monthDataMap.get(position);
-        return null == monthFlag ? 0 : monthFlag.dayCircleFlag;
-    }
 }

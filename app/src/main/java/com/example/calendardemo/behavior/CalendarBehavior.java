@@ -9,9 +9,9 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.pp.calendar.MonthView2;
+import com.pp.calendar.MonthView;
 
-public class CalendarBehavior extends CoordinatorLayout.Behavior<MonthView2> {
+public class CalendarBehavior extends CoordinatorLayout.Behavior<MonthView> {
 
     public CalendarBehavior() {
     }
@@ -21,12 +21,12 @@ public class CalendarBehavior extends CoordinatorLayout.Behavior<MonthView2> {
     }
 
     @Override
-    public boolean onStartNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull MonthView2 child, @NonNull View directTargetChild, @NonNull View target, int axes, int type) {
+    public boolean onStartNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull MonthView child, @NonNull View directTargetChild, @NonNull View target, int axes, int type) {
         return (axes & ViewCompat.SCROLL_AXIS_VERTICAL) != 0;
     }
 
     @Override
-    public void onNestedPreScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull MonthView2 monthView2, @NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
+    public void onNestedPreScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull MonthView monthView2, @NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
         if (target instanceof RecyclerView) {
             RecyclerView recyclerView = (RecyclerView) target;
 
@@ -42,6 +42,6 @@ public class CalendarBehavior extends CoordinatorLayout.Behavior<MonthView2> {
     }
 
     @Override
-    public void onNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull MonthView2 monthView2, @NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int type) {
+    public void onNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull MonthView monthView2, @NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int type) {
     }
 }

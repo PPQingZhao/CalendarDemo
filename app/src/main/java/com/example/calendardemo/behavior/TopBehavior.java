@@ -2,14 +2,13 @@ package com.example.calendardemo.behavior;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.pp.calendar.MonthView2;
+import com.pp.calendar.MonthView;
 
 
 public class TopBehavior extends CoordinatorLayout.Behavior<RecyclerView> {
@@ -22,13 +21,13 @@ public class TopBehavior extends CoordinatorLayout.Behavior<RecyclerView> {
 
     @Override
     public boolean layoutDependsOn(@NonNull CoordinatorLayout parent, @NonNull RecyclerView child, @NonNull View dependency) {
-        return dependency instanceof MonthView2;
+        return dependency instanceof MonthView;
     }
 
     @Override
     public boolean onDependentViewChanged(@NonNull CoordinatorLayout parent, @NonNull RecyclerView child, @NonNull View dependency) {
-        if (dependency instanceof MonthView2) {
-            MonthView2 monthView2 = (MonthView2) dependency;
+        if (dependency instanceof MonthView) {
+            MonthView monthView2 = (MonthView) dependency;
             int offsetY = monthView2.getOffsetY();
             int offset = offsetY - lastOffsetY;
             float targetY = dependency.getBottom() + offset;

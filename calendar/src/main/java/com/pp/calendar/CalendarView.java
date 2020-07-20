@@ -66,20 +66,6 @@ public class CalendarView extends FrameLayout {
         mRecyclerView.scrollToPosition(position);
     }
 
-    public void setMonthData(int year, int month, int monthData) {
-        Calendar instance = Calendar.getInstance();
-        instance.set(Calendar.YEAR, year);
-        instance.set(Calendar.MONTH, month);
-        calendarAdapter.setMonthData(instance, monthData);
-    }
-
-    public int getMonthData(int year, int month) {
-        Calendar instance = Calendar.getInstance();
-        instance.set(Calendar.YEAR, year);
-        instance.set(Calendar.MONTH, month);
-        return calendarAdapter.getMonthData(instance);
-    }
-
     public int getYear() {
         return selectedCalendar.get(Calendar.YEAR);
     }

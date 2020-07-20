@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             app:layout_behavior=".behavior.TopBehavior" />
 
-        <com.pp.calendar.MonthView2
+        <com.pp.calendar.MonthView
             android:id="@+id/test2_monthview"
             android:layout_width="match_parent"
             android:layout_height="300dp"
