@@ -27,8 +27,8 @@ public class TopBehavior extends CoordinatorLayout.Behavior<RecyclerView> {
     @Override
     public boolean onDependentViewChanged(@NonNull CoordinatorLayout parent, @NonNull RecyclerView child, @NonNull View dependency) {
         if (dependency instanceof MonthView) {
-            MonthView monthView2 = (MonthView) dependency;
-            int offsetY = monthView2.getOffsetY();
+            MonthView monthView = (MonthView) dependency;
+            int offsetY = monthView.getOffsetY();
             int offset = offsetY - lastOffsetY;
             float targetY = dependency.getBottom() + offset;
             child.setY(targetY);

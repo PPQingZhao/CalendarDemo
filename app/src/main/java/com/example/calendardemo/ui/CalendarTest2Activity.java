@@ -33,7 +33,7 @@ public class CalendarTest2Activity extends AppCompatActivity {
         mBinding.test2Recyclerview.setAdapter(new TestAdapter());
     }
 
-    class TestAdapter extends RecyclerView.Adapter<TestAdapter.Holder> {
+    static class TestAdapter extends RecyclerView.Adapter<TestAdapter.Holder> {
         class Holder extends RecyclerView.ViewHolder {
 
             private final RvItemBinding mBinding;
@@ -55,7 +55,6 @@ public class CalendarTest2Activity extends AppCompatActivity {
         public void onBindViewHolder(@NonNull Holder holder, int position) {
             holder.mBinding.tvContent.setText(String.valueOf(position));
         }
-
 
         @Override
         public int getItemCount() {

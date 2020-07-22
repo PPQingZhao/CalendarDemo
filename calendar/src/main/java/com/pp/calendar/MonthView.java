@@ -2,12 +2,10 @@ package com.pp.calendar;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.MonthDisplayHelper;
 import android.view.View;
@@ -190,10 +188,9 @@ public class MonthView extends View {
         }
         Calendar calendar = Calendar.getInstance();
         int[] rowDigits;
-        Bitmap cellBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas cellCanvas = new Canvas(cellBitmap);
         Rect cellRect = new Rect();
         int floatRow = mDayCellHelper.getFloatRow(this, mMonthDisplayHelper.getYear(), mMonthDisplayHelper.getMonth());
+        canvas.save();
         // 5行7列
         for (int row = 0; row < 5; row++) {
             // 月视图
@@ -242,15 +239,10 @@ public class MonthView extends View {
                 cellRect.right = cellRect.left + mCellInfo.width;
 
                 // day cell 绘制策略
-                mDayCellHelper.drawCell(calendar, mMonthDisplayHelper.getYear(), mMonthDisplayHelper.getMonth(), cellCanvas, cellRect);
+                mDayCellHelper.drawCell(calendar, mMonthDisplayHelper.getYear(), mMonthDisplayHelper.getMonth(), canvas, cellRect);
             }
         }
-
-        // 绘制 cellBitmap
-        Rect srcRect = new Rect(0, 0, cellBitmap.getWidth(), cellBitmap.getHeight());
-        canvas.drawBitmap(cellBitmap, srcRect, new RectF(0, 0, getWidth(), getHeight()), mPaint);
-        // 回收bitmap
-        cellBitmap.recycle();
+        canvas.restore();
     }
 
     class CellInfo {

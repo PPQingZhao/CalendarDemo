@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil;
 import com.example.calendardemo.R;
 
 public class MainActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,4 +25,5 @@ public class MainActivity extends AppCompatActivity {
     public void onCalendar2(View view) {
         startActivity(new Intent(getApplicationContext(), CalendarTest2Activity.class));
     }
+
 }

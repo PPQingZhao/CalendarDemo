@@ -19,8 +19,8 @@
             android:id="@+id/test2_monthview"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:background="@color/colorPrimary"
             android:gravity="center"
+            android:background="@android:color/white"
             android:text="@string/app_name"
             app:layout_behavior=".behavior.CalendarBehavior" />
 

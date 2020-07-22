@@ -41,7 +41,4 @@ public class CalendarBehavior extends CoordinatorLayout.Behavior<MonthView> {
         }
     }
 
-    @Override
-    public void onNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull MonthView monthView2, @NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int type) {
-    }
 }
